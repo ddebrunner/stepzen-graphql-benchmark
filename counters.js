@@ -28,20 +28,20 @@ function select(offset) {
     (response, elt) => {
       // Already found the right element, just return it.
       if (response.offset < 0) {
-        return response;
+        return response
       }
       if (response.offset - elt.weight < 0) {
         return {
           offset: -1,
           element: elt.target,
-        };
+        }
       }
       // The element is a subsequent one, reduce the offset
       // by the weight of this element.
       return {
         offset: response.offset - elt.weight,
         element: null,
-      };
+      }
       // This is the element. Return it, and set the offset
       // to a negative number.
     },
@@ -49,13 +49,13 @@ function select(offset) {
       offset: offset,
       element: null,
     },
-  );
+  )
 
   // This should never happen.
   if (targetElement.offset != -1) {
-    return 'yikes!!!';
+    return 'yikes!!!'
   }
 
   // Return the element (the offset is -1)
-  return targetElement.element;
+  return targetElement.element
 }
